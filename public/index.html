@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>AR Navigation</title>
+    <link rel="stylesheet" href="css/style.css"/>
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+    <script src="https://libs.zappar.com/zappar-aframe/0.2.5/zappar-aframe.js"></script>
+    <script src="https://unpkg.com/aframe-look-at-component@0.8.0/dist/aframe-look-at-component.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/master/aframe/build/aframe-ar-nft.js"></script>
+    <script src="//cdn.rawgit.com/donmccurdy/aframe-physics-system/v4.0.1/dist/aframe-physics-system.min.js"></script>
+
+</head>
+
+<body style="margin:0; overflow:hidden">
+
+
+<script>
+    AFRAME.registerComponent("locationfinder",{
+        init: ()=>{
+            navigator.geolocation.getCurrentPosition((location)=>{
+                console.log(location);
+            });
+        },
+    });
+</script>
+    
+<a-scene vr-mode-ui="enabled: false">
+    <a-camera gps-camera locationfinder rotation-reader></a-camera>
+    <a-text
+    value="HELLOO"
+    scale="15 15 15"
+    look-at="[gps-camera]"
+    align="center"
+    gps-entity-place="latitude:-7.32179234570029;longitude:112.72156640067523;"
+    >
+    </a-text>
+</a-scene>
+<h1>TES</h1>
+
+</body>
+</html>
